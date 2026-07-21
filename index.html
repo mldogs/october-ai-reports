@@ -1,4 +1,4 @@
-<title>Botamin: первый пилот голосового агента — отчёт 13.07.2026</title>
+<title>Botamin: пилот голосового агента — отчёт за 13–20 июля 2026</title>
 <style>
 :root{
   --bg:#fbfaf7; --surface:#ffffff; --ink:#20262b; --muted:#5d6a73; --line:#e4e1d8;
@@ -43,15 +43,18 @@ strong{ font-weight:650; }
 .tile.good .n{ color:var(--good); }
 .tile.warn .n{ color:var(--warn); }
 
-.pill{ display:inline-block; font-size:12px; font-weight:600; padding:2px 10px; border-radius:99px; }
+.pill{ display:inline-block; font-size:12px; font-weight:600; padding:2px 10px; border-radius:99px; margin-right:6px; }
 .pill.good{ background:var(--good-soft); color:var(--good); }
+.pill.warn{ background:var(--warn-soft); color:var(--warn); }
 
 .tablewrap{ overflow-x:auto; }
 table{ border-collapse:collapse; width:100%; font-size:14px; background:var(--surface); border:1px solid var(--line); border-radius:6px; }
 th,td{ text-align:left; padding:9px 14px; border-bottom:1px solid var(--line); vertical-align:top; }
 tr:last-child td{ border-bottom:none; }
 th{ font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:600; }
-td.num{ text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; font-weight:600; }
+td.num,th.num{ text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+td.num{ font-weight:600; }
+tr.total td{ border-top:2px solid var(--line); font-weight:650; }
 
 ul,ol{ margin:0 0 12px; padding-left:22px; max-width:68ch; }
 li{ margin-bottom:8px; }
@@ -62,7 +65,7 @@ blockquote{ margin:14px 0; padding:10px 16px; border-left:3px solid var(--line);
 .fig{ background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:16px 20px 14px; margin:16px 0; }
 .fig-title{ font-size:14px; font-weight:650; margin:0 0 2px; }
 .fig-sub{ font-size:12.5px; color:var(--muted); margin:0 0 14px; }
-.hbar-row{ display:grid; grid-template-columns:minmax(150px,190px) 1fr; gap:10px; align-items:center; margin-bottom:10px; }
+.hbar-row{ display:grid; grid-template-columns:minmax(150px,220px) 1fr; gap:10px; align-items:center; margin-bottom:10px; }
 .hbar-row:last-child{ margin-bottom:2px; }
 .hbar-label{ font-size:13px; color:var(--ink); line-height:1.3; text-align:right; }
 .hbar-track{ display:flex; align-items:center; gap:8px; min-width:0; }
@@ -81,99 +84,139 @@ footer{ margin-top:40px; padding-top:14px; border-top:1px solid var(--line); col
 <div class="page">
 <header>
   <p class="eyebrow">October Group · AI Lab · голосовой агент Botamin</p>
-  <h1>Первый пилот голосового агента: отчёт по обзвону 13 июля 2026</h1>
-  <p class="meta">Сценарий: реактивация «спящих» лидов ЖК Stories (Мосфильмовская) · бот «Валерия» · сессия 11:17–11:34 МСК</p>
-  <p class="meta">Первичные данные: полный журнал звонков с расшифровками и аудиозаписями (внутренний доступ)</p>
+  <h1>Пилот голосового агента: первая неделя обзвона — 13–20 июля 2026</h1>
+  <p class="meta">Сценарий: реактивация «спящих» лидов ЖК Stories (Мосфильмовская) · бот «Валерия» · 6 сессий обзвона</p>
+  <p class="meta">Первичные данные: полный журнал звонков с расшифровками и аудиозаписями (внутренний доступ) · разобраны все 120 расшифровок</p>
 </header>
 
 <section class="lede">
-  <p><span class="pill good">Негатива нет — 0 жалоб</span></p>
-  <p>Первый боевой прогон прошёл штатно: техника отработала без сбоев, ни одного негативного эпизода — жалоб, агрессии или требований «уберите мой номер» не зафиксировано. Контрольный порог по жалобам (остановка пилота при &gt;1%) — выполняется с запасом: 0%.</p>
-  <p>Конверсий в лид на этой выборке нет — и на 33 состоявшихся разговорах их статистически и не должно быть видно: при типичной реактивации 1–3% ожидаемое число лидов здесь 0–1. Следующий шаг — прогон на выборке 300–500 номеров.</p>
+  <p><span class="pill warn">0 лидов на 217 номерах</span><span class="pill good">Негатив 0,5% — порог 1% держится</span></p>
+  <p>За неделю прозвонено <strong>217 уникальных номеров</strong> (436 наборов), состоялось <strong>120 разговоров</strong> — дозвон 55%. Лидов и договорённостей по-прежнему ноль. Появился первый негатив: одна просьба «удалите мой номер из базы» и две грубые реакции — это 0,5% базы, контрольный порог остановки пилота (1% жалоб) пока держится.</p>
+  <p>Главная точка потерь не изменилась с первого дня: <strong>две трети собеседников кладут трубку на приветствии</strong>, не ответив на первый вопрос. Медиана разговора — 11 секунд. Открывающая фраза за неделю не менялась; A/B-тест, рекомендованный в прошлом отчёте, так и не проведён — это рекомендация №1 и на следующую неделю.</p>
 </section>
 
-<h2>Цифры прогона</h2>
+<h2>Цифры недели</h2>
 <div class="tiles">
-  <div class="tile"><div class="n">83</div><div class="l">уникальных номеров в обзвоне (140 наборов, до 2 попыток)</div></div>
-  <div class="tile"><div class="n">33</div><div class="l">состоявшихся разговора — дозвон 40% номеров</div></div>
-  <div class="tile good"><div class="n">0</div><div class="l">жалоб и негативных реакций</div></div>
-  <div class="tile warn"><div class="n">0</div><div class="l">лидов и договорённостей (мало выборки для вывода)</div></div>
+  <div class="tile"><div class="n">217</div><div class="l">уникальных номеров · 436 наборов (до 3 попыток)</div></div>
+  <div class="tile"><div class="n">120</div><div class="l">состоявшихся разговоров — дозвон 55% номеров</div></div>
+  <div class="tile warn"><div class="n">0</div><div class="l">лидов и договорённостей</div></div>
+  <div class="tile"><div class="n">4 096 ₽</div><div class="l">расход за неделю · 34 ₽ за состоявшийся разговор</div></div>
 </div>
 
+<div class="tablewrap">
+<table>
+  <tr><th>День</th><th class="num">Наборов</th><th class="num">Разговоров</th><th class="num">Дозвон</th><th class="num">Минут</th><th class="num">Расход</th></tr>
+  <tr><td>13.07</td><td class="num">140</td><td class="num">33</td><td class="num">40%</td><td class="num">33</td><td class="num">987 ₽</td></tr>
+  <tr><td>14.07</td><td class="num">67</td><td class="num">17</td><td class="num">28%</td><td class="num">22</td><td class="num">658 ₽</td></tr>
+  <tr><td>15.07</td><td class="num">6</td><td class="num">1</td><td class="num">17%</td><td class="num">1</td><td class="num">30 ₽</td></tr>
+  <tr><td>16.07</td><td class="num">45</td><td class="num">15</td><td class="num">56%</td><td class="num">17</td><td class="num">508 ₽</td></tr>
+  <tr><td>17.07</td><td class="num">43</td><td class="num">12</td><td class="num">38%</td><td class="num">12</td><td class="num">359 ₽</td></tr>
+  <tr><td>20.07</td><td class="num">135</td><td class="num">42</td><td class="num">48%</td><td class="num">52</td><td class="num">1 555 ₽</td></tr>
+  <tr class="total"><td>Итого</td><td class="num">436</td><td class="num">120</td><td class="num">55%*</td><td class="num">137</td><td class="num">4 096 ₽</td></tr>
+</table>
+</div>
+<blockquote>* Дозвон за день — доля номеров этого дня, с которыми состоялся разговор; итоговые 55% — по 217 уникальным номерам за всю неделю (часть номеров перезванивали в другие дни). Минуты — по биллингу платформы; остаток пакета — 596 минут.</blockquote>
+
 <div class="fig">
-  <p class="fig-title">Куда ушли 140 наборов</p>
-  <p class="fig-sub">Исход каждой попытки дозвона · 83 уникальных номера, до 2 попыток на номер</p>
+  <p class="fig-title">Куда ушли 436 наборов</p>
+  <p class="fig-sub">Исход каждой попытки дозвона · 217 уникальных номеров, до 3 попыток на номер</p>
   <div class="funnel">
     <div class="hbar-row">
       <div class="hbar-label">Занято / сброс до ответа</div>
-      <div class="hbar-track"><div class="hbar" style="flex-basis:67%"></div><div class="hbar-val">94 <small>· 67%</small></div></div>
+      <div class="hbar-track"><div class="hbar" style="flex-basis:65%"></div><div class="hbar-val">282 <small>· 65%</small></div></div>
     </div>
     <div class="hbar-row">
       <div class="hbar-label">Разговор состоялся</div>
-      <div class="hbar-track"><div class="hbar hi" style="flex-basis:23.6%"></div><div class="hbar-val">33 <small>· 24%</small></div></div>
+      <div class="hbar-track"><div class="hbar hi" style="flex-basis:27.5%"></div><div class="hbar-val">120 <small>· 28%</small></div></div>
     </div>
     <div class="hbar-row">
       <div class="hbar-label">Умный автоответчик</div>
-      <div class="hbar-track"><div class="hbar" style="flex-basis:9.3%"></div><div class="hbar-val">13 <small>· 9%</small></div></div>
+      <div class="hbar-track"><div class="hbar" style="flex-basis:6.4%"></div><div class="hbar-val">28 <small>· 6%</small></div></div>
+    </div>
+    <div class="hbar-row">
+      <div class="hbar-label">IVR / голосовое меню</div>
+      <div class="hbar-track"><div class="hbar" style="flex-basis:1.4%"></div><div class="hbar-val">6 <small>· 1%</small></div></div>
     </div>
   </div>
-  <p class="fig-note">С учётом повторных попыток разговор состоялся с 33 из 83 номеров — дозвон 40%.</p>
 </div>
 
 <div class="fig">
-  <p class="fig-title">Чем закончились 33 разговора</p>
-  <p class="fig-sub">По расшифровкам диалогов · лидов и договорённостей — 0</p>
+  <p class="fig-title">Чем закончились 120 разговоров</p>
+  <p class="fig-sub">По разбору всех расшифровок · лидов — 0</p>
   <div class="funnel">
     <div class="hbar-row">
       <div class="hbar-label">Положили трубку на приветствии</div>
-      <div class="hbar-track"><div class="hbar" style="flex-basis:57.6%"></div><div class="hbar-val">~19 <small>· 58%</small></div></div>
+      <div class="hbar-track"><div class="hbar" style="flex-basis:66.7%"></div><div class="hbar-val">80 <small>· 67%</small></div></div>
     </div>
     <div class="hbar-row">
       <div class="hbar-label">Явный отказ («нет, спасибо»)</div>
-      <div class="hbar-track"><div class="hbar hi" style="flex-basis:36.4%"></div><div class="hbar-val">12 <small>· 36%</small></div></div>
+      <div class="hbar-track"><div class="hbar hi" style="flex-basis:18.3%"></div><div class="hbar-val">22 <small>· 18%</small></div></div>
     </div>
     <div class="hbar-row">
-      <div class="hbar-label">«Уже купили» / «ошиблись номером»</div>
-      <div class="hbar-track"><div class="hbar" style="flex-basis:6.1%"></div><div class="hbar-val">2 <small>· 6%</small></div></div>
+      <div class="hbar-label">Короткая реплика и обрыв</div>
+      <div class="hbar-track"><div class="hbar" style="flex-basis:4.2%"></div><div class="hbar-val">5 <small>· 4%</small></div></div>
+    </div>
+    <div class="hbar-row">
+      <div class="hbar-label">Развёрнутый разговор (45 сек — 7 мин)</div>
+      <div class="hbar-track"><div class="hbar gd" style="flex-basis:4.2%"></div><div class="hbar-val">5 <small>· 4%</small></div></div>
+    </div>
+    <div class="hbar-row">
+      <div class="hbar-label">«Ошиблись номером» / «уже купили»</div>
+      <div class="hbar-track"><div class="hbar" style="flex-basis:2.5%"></div><div class="hbar-val">3 <small>· 3%</small></div></div>
+    </div>
+    <div class="hbar-row">
+      <div class="hbar-label">Негатив (грубость ×2, «удалите номер» ×1)</div>
+      <div class="hbar-track"><div class="hbar wn" style="flex-basis:2.5%"></div><div class="hbar-val">3 <small>· 3%</small></div></div>
+    </div>
+    <div class="hbar-row">
+      <div class="hbar-label">Тёплый сигнал («да» / «перезвоните»)</div>
+      <div class="hbar-track"><div class="hbar gd" style="flex-basis:1.7%"></div><div class="hbar-val">2 <small>· 2%</small></div></div>
     </div>
   </div>
-  <p class="fig-note">Негативных реакций, жалоб и требований «не звонить» — ни одной из 33.</p>
+  <p class="fig-note">Оба тёплых сигнала потеряны: разговор с ответившим «да» оборвался на 9-й секунде, а попросившей перезвонить набрали через час — занято, больше попыток не было.</p>
 </div>
 
 <div class="fig">
   <p class="fig-title">Длительность состоявшихся разговоров</p>
-  <p class="fig-sub">Медиана 12 сек · максимум 36 сек</p>
+  <p class="fig-sub">Медиана 11 сек · максимум 7 мин 01 сек</p>
   <div class="funnel">
     <div class="hbar-row">
       <div class="hbar-label">до 10 сек</div>
-      <div class="hbar-track"><div class="hbar" style="flex-basis:24.8%"></div><div class="hbar-val">7 <small>· 21%</small></div></div>
+      <div class="hbar-track"><div class="hbar" style="flex-basis:30.4%"></div><div class="hbar-val">29 <small>· 24%</small></div></div>
     </div>
     <div class="hbar-row">
       <div class="hbar-label">10–30 сек</div>
-      <div class="hbar-track"><div class="hbar hi" style="flex-basis:85%"></div><div class="hbar-val">24 <small>· 73%</small></div></div>
+      <div class="hbar-track"><div class="hbar hi" style="flex-basis:85%"></div><div class="hbar-val">81 <small>· 68%</small></div></div>
     </div>
     <div class="hbar-row">
       <div class="hbar-label">30–60 сек</div>
-      <div class="hbar-track"><div class="hbar" style="flex-basis:7.1%"></div><div class="hbar-val">2 <small>· 6%</small></div></div>
+      <div class="hbar-track"><div class="hbar" style="flex-basis:7.3%"></div><div class="hbar-val">7 <small>· 6%</small></div></div>
+    </div>
+    <div class="hbar-row">
+      <div class="hbar-label">дольше 2 минут</div>
+      <div class="hbar-track"><div class="hbar gd" style="flex-basis:3.1%"></div><div class="hbar-val">3 <small>· 2%</small></div></div>
     </div>
   </div>
-  <p class="fig-note">Ни один разговор не дошёл до минуты — почти все обрываются на этапе приветствия и первого вопроса.</p>
+  <p class="fig-note">На первом прогоне 13.07 ни один разговор не дошёл до минуты. После обновления скрипта появились первые разговоры на 2–7 минут — все 20.07 и 16.07.</p>
 </div>
 
-<h2>Что бот делает хорошо</h2>
+<h2>Что изменилось за неделю</h2>
 <ul>
-  <li>Корректно представляется (компания, имя, повод) — легенда «вы ранее интересовались Stories» считывается клиентами без вопросов.</li>
-  <li>Вежливо отрабатывает отказ и не бросает разговор: задаёт уточняющий вопрос («что изменилось?», «может быть, уже приобрели?»).</li>
-  <li>Справляется с перебиванием: в одном из звонков клиент перебил — бот извинился и корректно продолжил.</li>
-  <li>По просьбе клиента повторяет и переформулирует представление.</li>
+  <li><strong>Скрипт стал заметно живее.</strong> К прогону 20.07 бот получил эмоциональную разметку реплик и научился удерживать беседу: в длинных разговорах он отрабатывает возражения, отвечает на вопросы про локацию, скидки, эскроу-счета и награды проекта, корректно реагирует на перебивания.</li>
+  <li><strong>Но длинные разговоры пока не с целевой аудиторией.</strong> Самый длинный диалог (7 минут) — с явно растерянной собеседницей, которая задавала вопросы про «техподдержку» и «оператора»; ещё один — с человеком, разговаривавшим параллельно с кем-то дома. Единственный содержательный длинный разговор закончился «уже всё купили».</li>
+  <li><strong>Телефония мешает именно там, где бот начал работать.</strong> В длинных разговорах клиенты жалуются «вы заикаетесь», «снова пропадаете»; расшифровки пестрят пометками «тут нас перебили». Пока разговоры длились 10 секунд, это было незаметно — теперь это ограничитель.</li>
+  <li><strong>Появился первый негатив — в пределах нормы.</strong> Одна просьба удалить номер из базы (номер надо немедленно внести в стоп-лист) и две грубые реакции; один собеседник опознал бота («электронный интеллект»). Итого 0,5% от базы при пороге 1%.</li>
+  <li><strong>В журнале битые таймстемпы.</strong> Звонки 14–15 и 17 июля записаны со временем 00:00–06:30 «по МСК» — по тону диалогов это дневные звонки, то есть в логах сломана таймзона. Нужно уточнить у подрядчика: если звонки реально уходят ночью, это риск жалоб и нарушение практики обзвона.</li>
 </ul>
 
-<h2>Рекомендации к следующему шагу</h2>
+<h2>Рекомендации на следующую неделю</h2>
 <ul>
-  <li>Расширить выборку до <strong>300–500 номеров</strong> — только на ней можно достоверно оценить конверсию в лид.</li>
-  <li>Обзванивать в 2–3 волны в разное время (день / вечер) для поднятия дозвона.</li>
-  <li>A/B-тест открывающей фразы: закрытый вопрос против оффера с поводом.</li>
-  <li>Зафиксировать критерии продолжения пилота: жалобы &lt;1% (выполняется), дозвон ≥50% на большой выборке, первые лиды.</li>
+  <li><strong>Переработать первые 10 секунд</strong> — там теряется 67% разговоров. Провести A/B открывающей фразы (рекомендация из прошлого отчёта, не выполнена): короткий закрытый вопрос против оффера с поводом «стартует выдача ключей».</li>
+  <li><strong>Не терять тёплые сигналы:</strong> авто-перезвон в течение суток по обрывам после «да» и просьбам «перезвоните позже», с передачей номера живому менеджеру.</li>
+  <li><strong>Стоп-лист по первому требованию:</strong> номер с просьбой «удалите из базы» исключается из всех колл-листов автоматически — это же держит долю жалоб под порогом 1%.</li>
+  <li><strong>Починить телефонию и логи:</strong> задержки и «заикания» в длинных разговорах, двойное «Ало…» в начале, таймзона в журнале.</li>
+  <li><strong>База выдыхается:</strong> 217 номеров прозвонены по 2–3 раза с нулевой конверсией. Для достоверной оценки конверсии в лид нужна свежая выборка 300–500 номеров — на текущей базе дальнейшие прогоны дадут только рост негатива.</li>
 </ul>
 
+<footer>Отчёт обновлён 21.07.2026 · разобраны все 436 записей журнала и 120 расшифровок за 13–20 июля</footer>
 </div>
